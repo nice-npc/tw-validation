@@ -14,7 +14,7 @@ class NationalIdentityNumberValidatorTest {
     }
 
     @Test
-    @DisplayName("[身分證開頭不是大寫英文][驗證格式][驗證失敗]")
+    @DisplayName("[身分證開頭不是大寫英文][驗證格式][驗證成功]")
     public void test2() {
         boolean result = NationalIdentityNumberValidator.valid("a123456789");
         Assertions.assertTrue(result);
