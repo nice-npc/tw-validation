@@ -1,10 +1,9 @@
 package com.nicenpc.twvalidation.validator;
 
-import com.nicenpc.twvalidation.exception.InvalidNationalIdentityNumberException;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class NationalIdentityNumberValidator {
@@ -49,14 +48,26 @@ public class NationalIdentityNumberValidator {
      * 驗證身分證字號
      *
      * @param identityCardNumber 身份證字號
-     * @throws InvalidNationalIdentityNumberException 身分證字號驗證失敗
      */
-    public static void valid(final String identityCardNumber) throws InvalidNationalIdentityNumberException {
-        validFormat(identityCardNumber);
-        final char[] identityNumberChars = identityCardNumber.toCharArray();
+    public static boolean valid(final String identityCardNumber) {
+        if (null == identityCardNumber) {
+            return false;
+        }
+
+        if (identityCardNumber.isBlank()) {
+            return false;
+        }
+
+        final String upperCaseIdentityCardNumber = identityCardNumber.toUpperCase();
+
+        boolean result = validFormat(upperCaseIdentityCardNumber);
+        if (!result) {
+            return false;
+        }
+        final char[] identityNumberChars = upperCaseIdentityCardNumber.toCharArray();
         final int checkSum = Character.getNumericValue(identityNumberChars[LAST_ID_INDEX]);
         final int calculateCheckSum = calculateCheckSum(identityNumberChars);
-        validCheckNumber(calculateCheckSum, checkSum);
+        return validCheckNumber(calculateCheckSum, checkSum);
     }
 
     /**
@@ -64,10 +75,9 @@ public class NationalIdentityNumberValidator {
      *
      * @param taiwanIdentityNumber 身份證字號
      */
-    static void validFormat(String taiwanIdentityNumber) throws InvalidNationalIdentityNumberException {
-        if (!PATTERN.matcher(taiwanIdentityNumber).matches()) {
-            throw new InvalidNationalIdentityNumberException(ErrorMessage.WRONG_FORMAT);
-        }
+    static boolean validFormat(String taiwanIdentityNumber) {
+        final Matcher matcher = PATTERN.matcher(taiwanIdentityNumber);
+        return matcher.matches();
     }
 
 
@@ -97,12 +107,9 @@ public class NationalIdentityNumberValidator {
      *
      * @param calculateCheckSum  計算出的checkSum
      * @param lastIdentityNumber 身分證字號最後一碼
-     * @throws InvalidNationalIdentityNumberException 身分證字號驗證失敗
      */
-    private static void validCheckNumber(int calculateCheckSum, int lastIdentityNumber) throws InvalidNationalIdentityNumberException {
-        if (!(calculateCheckSum == lastIdentityNumber)) {
-            throw new InvalidNationalIdentityNumberException(ErrorMessage.INVALID_NATIONAL_IDENTITY_NUMBER);
-        }
+    private static boolean validCheckNumber(int calculateCheckSum, int lastIdentityNumber) {
+        return calculateCheckSum == lastIdentityNumber;
     }
 
 
