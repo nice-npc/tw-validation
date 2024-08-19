@@ -67,7 +67,7 @@ public class NationalIdentityNumberValidator {
         final char[] identityNumberChars = upperCaseIdentityCardNumber.toCharArray();
         final int checkSum = Character.getNumericValue(identityNumberChars[LAST_ID_INDEX]);
         final int calculateCheckSum = calculateCheckSum(identityNumberChars);
-        return validCheckNumber(calculateCheckSum, checkSum);
+        return calculateCheckSum == checkSum;
     }
 
     /**
@@ -100,16 +100,6 @@ public class NationalIdentityNumberValidator {
         //除10取餘數
         int sumMod10 = sum % 10;
         return (sumMod10 == 0) ? 0 : (10 - sumMod10);
-    }
-
-    /**
-     * 計算出來的數值是否與最後一位檢查碼相同
-     *
-     * @param calculateCheckSum  計算出的checkSum
-     * @param lastIdentityNumber 身分證字號最後一碼
-     */
-    private static boolean validCheckNumber(int calculateCheckSum, int lastIdentityNumber) {
-        return calculateCheckSum == lastIdentityNumber;
     }
 
 
