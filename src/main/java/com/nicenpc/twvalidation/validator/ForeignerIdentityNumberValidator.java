@@ -13,7 +13,7 @@ public class ForeignerIdentityNumberValidator {
             return false;
         }
 
-        if (identityNumber.isEmpty()) {
+        if (identityNumber.isBlank()) {
             return false;
         }
 
