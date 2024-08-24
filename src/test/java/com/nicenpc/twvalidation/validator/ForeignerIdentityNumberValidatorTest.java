@@ -10,14 +10,14 @@ class ForeignerIdentityNumberValidatorTest {
     @Test
     @DisplayName("[正確的外來人口統一證號][驗證格式][驗證成功]")
     public void test1() {
-        boolean result = ForeignerIdentityNumberValidator.valid("A823456789");
+        boolean result = ForeignerIdentityNumberValidator.valid("A861084629");
         Assertions.assertTrue(result);
     }
 
     @Test
     @DisplayName("[外來人口統一證號開頭不是大寫英文][驗證格式][驗證成功]")
     public void test2() {
-        boolean result = ForeignerIdentityNumberValidator.valid("a923456789");
+        boolean result = ForeignerIdentityNumberValidator.valid("k840280175");
         Assertions.assertTrue(result);
     }
 
