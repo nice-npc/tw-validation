@@ -1,6 +1,5 @@
 package com.nicenpc.twvalidation.validator;
 
-import com.nicenpc.twvalidation.validator.NationalIdentityNumberValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
