@@ -63,8 +63,6 @@ public class ForeignerIdentityNumberValidator {
 
     /**
      * 計算checkSum
-     *
-     * @param identityNumberChars 身分證字號char[]
      */
     private static int calculateCheckSum(char[] identityNumberChars) {
         // 取得身份證字號第一個字母
