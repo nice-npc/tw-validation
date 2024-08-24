@@ -1,6 +1,5 @@
 package com.nicenpc.twvalidation.validator;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -11,37 +10,35 @@ public class NationalIdentityNumberValidator {
     private static final String REGEX = "[A-Z][12]\\d{8}";
     private static final Pattern PATTERN = Pattern.compile(REGEX);
     private static final int[] MULTIPLIERS = {8, 7, 6, 5, 4, 3, 2, 1};
-    private static final Map<String, Integer> FIRST_LETTER_VALUE_MAP;
+    private static final Map<String, Integer> FIRST_LETTER_VALUE_MAP = new HashMap<>();
 
     static {
-        Map<String, Integer> map = new HashMap<>();
-        map.put("A", 1);
-        map.put("B", 0);
-        map.put("C", 9);
-        map.put("D", 8);
-        map.put("E", 7);
-        map.put("F", 6);
-        map.put("G", 5);
-        map.put("H", 4);
-        map.put("I", 9);
-        map.put("J", 3);
-        map.put("K", 2);
-        map.put("L", 2);
-        map.put("M", 1);
-        map.put("N", 0);
-        map.put("O", 8);
-        map.put("P", 9);
-        map.put("Q", 8);
-        map.put("R", 7);
-        map.put("S", 6);
-        map.put("T", 5);
-        map.put("U", 4);
-        map.put("V", 3);
-        map.put("W", 1);
-        map.put("X", 3);
-        map.put("Y", 2);
-        map.put("Z", 0);
-        FIRST_LETTER_VALUE_MAP = Collections.unmodifiableMap(map);
+        FIRST_LETTER_VALUE_MAP.put("A", 1);
+        FIRST_LETTER_VALUE_MAP.put("B", 0);
+        FIRST_LETTER_VALUE_MAP.put("C", 9);
+        FIRST_LETTER_VALUE_MAP.put("E", 7);
+        FIRST_LETTER_VALUE_MAP.put("F", 6);
+        FIRST_LETTER_VALUE_MAP.put("D", 8);
+        FIRST_LETTER_VALUE_MAP.put("G", 5);
+        FIRST_LETTER_VALUE_MAP.put("H", 4);
+        FIRST_LETTER_VALUE_MAP.put("I", 9);
+        FIRST_LETTER_VALUE_MAP.put("J", 3);
+        FIRST_LETTER_VALUE_MAP.put("K", 2);
+        FIRST_LETTER_VALUE_MAP.put("L", 2);
+        FIRST_LETTER_VALUE_MAP.put("M", 1);
+        FIRST_LETTER_VALUE_MAP.put("N", 0);
+        FIRST_LETTER_VALUE_MAP.put("O", 8);
+        FIRST_LETTER_VALUE_MAP.put("P", 9);
+        FIRST_LETTER_VALUE_MAP.put("Q", 8);
+        FIRST_LETTER_VALUE_MAP.put("R", 7);
+        FIRST_LETTER_VALUE_MAP.put("S", 6);
+        FIRST_LETTER_VALUE_MAP.put("T", 5);
+        FIRST_LETTER_VALUE_MAP.put("U", 4);
+        FIRST_LETTER_VALUE_MAP.put("V", 3);
+        FIRST_LETTER_VALUE_MAP.put("W", 1);
+        FIRST_LETTER_VALUE_MAP.put("X", 3);
+        FIRST_LETTER_VALUE_MAP.put("Y", 2);
+        FIRST_LETTER_VALUE_MAP.put("Z", 0);
     }
 
     /**
