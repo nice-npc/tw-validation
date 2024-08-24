@@ -1,3 +1,4 @@
+package com.nicenpc.twvalidation.validator;
 
 import com.nicenpc.twvalidation.validator.NationalIdentityNumberValidator;
 import org.junit.jupiter.api.Assertions;
